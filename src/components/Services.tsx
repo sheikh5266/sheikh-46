@@ -96,8 +96,8 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="portfolio-card p-8 group card-3d card-flip glow-border transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="portfolio-card p-8 group animate-scale-in card-3d transition-all duration-300 hover:shadow-lg"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="space-y-6">
                 {/* Enhanced Header */}
