@@ -196,7 +196,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-5 w-5 text-mint icon-pulse" />
-                <span className="text-gray-600">Typically replies within 48 hours</span>
+                <span className="text-gray-600">Typically replies within 24 hours</span>
               </div>
             </div>
           </div>
