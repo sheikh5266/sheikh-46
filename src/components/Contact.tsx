@@ -172,7 +172,7 @@ const Contact = () => {
                   href={method.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="portfolio-card p-6 flex items-center space-x-4 group card-3d card-flip glow-border"
+                  className="portfolio-card p-6 flex items-center space-x-4 group animate-scale-in transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="bg-gradient-mint p-3 rounded-lg group-hover:scale-110 transition-transform">
                     <method.icon className="h-5 w-5 text-white icon-pulse" />
@@ -202,7 +202,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="portfolio-card p-8 card-3d glow-border relative">
+          <div className="portfolio-card p-8 animate-scale-in transition-all duration-300 hover:shadow-lg relative">
             {/* Success Animation Overlay */}
             {showSuccess && (
               <div className="absolute inset-0 bg-white/95 flex items-center justify-center z-50 rounded-xl">
