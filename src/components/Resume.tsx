@@ -433,11 +433,12 @@ const Resume = () => {
             <h2><span className="under">Core Skills</span> <Award className="inline-block ml-2 h-5 w-5 text-mint icon-pulse" /></h2>
             <div className="chips">
               {[
+                { skill: 'Web Development', percentage: 95 },
                 { skill: 'Meta Ad Management', percentage: 90 },
-                { skill: 'Strategy Planning & Storytelling', percentage: 84 },
-                { skill: 'Web Development', percentage: 88 },
-                { skill: 'Motion Graphics Design', percentage: 77 },
-                { skill: 'Professional Video Editing', percentage: 90 }
+                { skill: 'Video Editing', percentage: 95 },
+                { skill: 'Graphic Design', percentage: 88 },
+                { skill: '2D Illustration', percentage: 85 },
+                { skill: 'Motion Graphics', percentage: 90 }
               ].map((item, index) => (
                 <div key={item.skill} className="w-full mb-4">
                   <div className="flex justify-between mb-1">
