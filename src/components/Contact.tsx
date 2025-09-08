@@ -122,6 +122,7 @@ const Contact = () => {
     'Video Editing',
     'Motion Graphics',
     '2D Illustration',
+    'Automation and AI Agent',
     'Complete Package',
     'Other'
   ];
