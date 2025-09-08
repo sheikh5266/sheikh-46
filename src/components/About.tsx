@@ -13,6 +13,7 @@ const About = () => {
     { name: 'Graphic Design', level: 88 },
     { name: '2D Illustration', level: 85 },
     { name: 'Motion Graphics', level: 90 },
+    { name: 'Automation', level: 92 },
   ];
 
   const journey = [

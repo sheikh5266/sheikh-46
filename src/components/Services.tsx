@@ -7,7 +7,8 @@ import {
   ArrowRight,
   CheckCircle,
   BarChart3,
-  Smartphone
+  Smartphone,
+  Bot
 } from "lucide-react";
 import { MarketingIcon, CreativeIcon } from "@/components/ui/flat-illustrations";
 
@@ -44,6 +45,14 @@ const Services = () => {
       process: ['Concept', 'Sketches', 'Digital Art', 'Revisions', 'Final Files'],
       deliverables: ['Storyboards (PDF)', 'Scripts (doc)', 'Illustrations (PNG, SVG)'],
       accent: 'bg-green-500'
+    },
+    {
+      icon: Bot,
+      title: 'Automation and AI Agent',
+      description: 'Custom automation solutions, AI chatbots, workflow optimization, and intelligent process automation.',
+      process: ['Analysis', 'Design', 'Development', 'Integration', 'Training'],
+      deliverables: ['Automation scripts', 'AI agent setup', 'Documentation', 'Training materials'],
+      accent: 'bg-orange-500'
     }
   ];
 

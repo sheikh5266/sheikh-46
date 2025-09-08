@@ -438,7 +438,8 @@ const Resume = () => {
                 { skill: 'Video Editing', percentage: 95 },
                 { skill: 'Graphic Design', percentage: 88 },
                 { skill: '2D Illustration', percentage: 85 },
-                { skill: 'Motion Graphics', percentage: 90 }
+                { skill: 'Motion Graphics', percentage: 90 },
+                { skill: 'Automation', percentage: 92 }
               ].map((item, index) => (
                 <div key={item.skill} className="w-full mb-4">
                   <div className="flex justify-between mb-1">
