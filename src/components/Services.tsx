@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Globe, 
@@ -12,7 +13,12 @@ import {
 } from "lucide-react";
 import { MarketingIcon, CreativeIcon } from "@/components/ui/flat-illustrations";
 
-const Services = () => {
+interface ServicesProps {
+  isHomepage?: boolean;
+}
+
+const Services = ({ isHomepage = false }: ServicesProps) => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: Target,
@@ -61,6 +67,8 @@ const Services = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const displayedServices = isHomepage ? services.slice(0, 2) : services;
+
   return (
     <section id="services" className="section-padding bg-white relative overflow-hidden">
       {/* Animated Gradient Waves Background */}
@@ -102,7 +110,7 @@ const Services = () => {
 
         {/* Enhanced Services Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-16 stagger-container">
-          {services.map((service, index) => (
+          {displayedServices.map((service, index) => (
             <div 
               key={index} 
               className="portfolio-card p-8 group animate-scale-in card-3d transition-all duration-300 hover:shadow-lg"
@@ -164,25 +172,43 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Enhanced Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center stagger-container">
-          <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.1s' }}>
-            <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">50+</div>
-            <div className="text-sm text-gray-600">Projects Completed</div>
+        {/* View All Services Button for Homepage */}
+        {isHomepage && (
+          <div className="text-center mb-16 animate-fade-in-up">
+            <Button 
+              className="btn-hero filter-btn group relative overflow-hidden bg-gradient-to-r from-mint to-mint-light hover:from-mint-dark hover:to-mint transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-mint/25"
+              onClick={() => navigate('/services')}
+            >
+              <span className="relative z-10 flex items-center">
+                View All Services
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            </Button>
           </div>
-          <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.2s' }}>
-            <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">30+</div>
-            <div className="text-sm text-gray-600">Happy Clients</div>
+        )}
+
+        {/* Enhanced Quick Stats - Only show on full services page */}
+        {!isHomepage && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center stagger-container">
+            <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.1s' }}>
+              <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">50+</div>
+              <div className="text-sm text-gray-600">Projects Completed</div>
+            </div>
+            <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.2s' }}>
+              <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">30+</div>
+              <div className="text-sm text-gray-600">Happy Clients</div>
+            </div>
+            <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.3s' }}>
+              <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">24h</div>
+              <div className="text-sm text-gray-600">Avg Response Time</div>
+            </div>
+            <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.4s' }}>
+              <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">99%</div>
+              <div className="text-sm text-gray-600">Client Satisfaction</div>
+            </div>
           </div>
-          <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.3s' }}>
-            <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">24h</div>
-            <div className="text-sm text-gray-600">Avg Response Time</div>
-          </div>
-          <div className="space-y-2 animate-scale-in card-3d" style={{ animationDelay: '0.4s' }}>
-            <div className="text-3xl font-bold text-charcoal animate-pulse-glow hover:animate-bounce-in transition-all duration-300 cursor-default icon-pulse">99%</div>
-            <div className="text-sm text-gray-600">Client Satisfaction</div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

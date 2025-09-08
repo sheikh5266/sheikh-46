@@ -106,11 +106,11 @@ const Index = () => {
       </section>
       
       <section id="services" className="reveal">
-        <Services />
+        <Services isHomepage={true} />
       </section>
       
       <section id="portfolio" className="reveal">
-        <Portfolio />
+        <Portfolio isHomepage={true} />
       </section>
       
       <section id="contact" className="reveal">

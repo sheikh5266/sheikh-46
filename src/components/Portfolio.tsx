@@ -1,11 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Play, Github } from "lucide-react";
+import { ExternalLink, Play, Github, ArrowRight } from "lucide-react";
 import { AnimatedLoader, ParticleBackground } from "@/components/ui/animated-illustrations";
 
-const Portfolio = () => {
+interface PortfolioProps {
+  isHomepage?: boolean;
+}
+
+const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const filters = ['All', 'Video', 'Motion', 'Illustration', 'Web', 'Ads'];
 
@@ -76,6 +82,8 @@ const Portfolio = () => {
   const filteredItems = activeFilter === 'All' 
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeFilter);
+
+  const displayedItems = isHomepage ? filteredItems.slice(0, 3) : filteredItems;
 
   const handleFilterChange = (filter: string) => {
     if (filter !== activeFilter) {
@@ -160,22 +168,24 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => handleFilterChange(filter)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 filter-btn ${
-                activeFilter === filter
-                  ? 'bg-mint text-white shadow-mint glow-border'
-                  : 'bg-white text-charcoal hover:bg-mint hover:text-white card-flip'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+        {/* Filter Buttons - Only show on full portfolio page */}
+        {!isHomepage && (
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => handleFilterChange(filter)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 filter-btn ${
+                  activeFilter === filter
+                    ? 'bg-mint text-white shadow-mint glow-border'
+                    : 'bg-white text-charcoal hover:bg-mint hover:text-white card-flip'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Loading Animation */}
         {isLoading && (
@@ -187,7 +197,7 @@ const Portfolio = () => {
         {/* Portfolio Grid */}
         {!isLoading && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
-            {filteredItems.map((item) => (
+            {displayedItems.map((item) => (
               <div key={item.id} className="portfolio-card overflow-hidden group card-3d card-flip glow-border">
                 {/* Image */}
                 <div className="relative aspect-video bg-gray-200 overflow-hidden">
@@ -250,21 +260,39 @@ const Portfolio = () => {
           </div>
         )}
 
-        {/* Call to Action */}
-        <div className="text-center mt-16 animate-fade-in-up">
-          <p className="text-lg text-gray-600 mb-6">
-            Interested in working together? Let's create something amazing.
-          </p>
-          <Button 
-            className="btn-hero filter-btn"
-            onClick={() => {
-              const element = document.getElementById('contact');
-              element?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Start Your Project
-          </Button>
-        </div>
+        {/* View All Button for Homepage */}
+        {isHomepage && (
+          <div className="text-center mt-12 animate-fade-in-up">
+            <Button 
+              className="btn-hero filter-btn group relative overflow-hidden bg-gradient-to-r from-mint to-mint-light hover:from-mint-dark hover:to-mint transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-mint/25"
+              onClick={() => navigate('/portfolio')}
+            >
+              <span className="relative z-10 flex items-center">
+                View My Works
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            </Button>
+          </div>
+        )}
+
+        {/* Call to Action for Full Portfolio Page */}
+        {!isHomepage && (
+          <div className="text-center mt-16 animate-fade-in-up">
+            <p className="text-lg text-gray-600 mb-6">
+              Interested in working together? Let's create something amazing.
+            </p>
+            <Button 
+              className="btn-hero filter-btn"
+              onClick={() => {
+                const element = document.getElementById('contact');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Start Your Project
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
