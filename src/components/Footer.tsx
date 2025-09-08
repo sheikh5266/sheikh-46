@@ -81,6 +81,7 @@ const Footer = () => {
                 <p>Video Editing</p>
                 <p>Motion Graphics</p>
                 <p>2D Illustration</p>
+                <p>Automation and AI Agent</p>
               </div>
             </div>
           </div>
