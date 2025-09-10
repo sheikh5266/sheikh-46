@@ -48,11 +48,11 @@ const Navigation = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'glass-card backdrop-blur-md' : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="container mx-auto mobile-container">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <div 
-            className={`text-2xl font-bold cursor-pointer transition-colors duration-300 ${
+            className={`text-xl sm:text-2xl font-bold cursor-pointer transition-colors duration-300 touch-target flex items-center justify-center ${
               isScrolled ? 'text-primary' : 'text-white'
             }`}
             onClick={() => navigate('/')}
@@ -61,12 +61,12 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item)}
-                className={`transition-colors duration-300 font-medium ${
+                className={`transition-colors duration-300 font-medium text-sm lg:text-base ${
                   isScrolled 
                     ? 'text-primary/80 hover:text-primary' 
                     : 'text-white/80 hover:text-white'
@@ -76,7 +76,7 @@ const Navigation = () => {
               </button>
             ))}
             <Button 
-              className="btn-hero"
+              className="btn-hero text-sm lg:text-base px-4 py-2 lg:px-6 lg:py-3"
               onClick={() => handleNavigation({ name: 'Contact', id: 'contact' })}
             >
               Get Quote
@@ -85,7 +85,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden transition-colors duration-300 ${
+            className={`md:hidden transition-colors duration-300 touch-target flex items-center justify-center ${
               isScrolled ? 'text-primary' : 'text-white'
             }`}
             onClick={() => setIsOpen(!isOpen)}
@@ -96,19 +96,19 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-charcoal/95 backdrop-blur-md rounded-lg mt-2 p-4 animate-scale-in">
+          <div className="md:hidden bg-charcoal/95 backdrop-blur-md rounded-lg mt-2 p-4 animate-scale-in border border-white/10 shadow-xl">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-left py-2"
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-left py-3 px-2 rounded-lg hover:bg-white/10"
                 >
                   {item.name}
                 </button>
               ))}
               <Button 
-                className="btn-hero mt-4"
+                className="btn-hero mt-4 w-full"
                 onClick={() => handleNavigation({ name: 'Contact', id: 'contact' })}
               >
                 Get Quote

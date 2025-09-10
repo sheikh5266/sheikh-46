@@ -13,9 +13,9 @@ const ServicesPage = () => {
         <link rel="canonical" href="/services" />
       </Helmet>
       
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white overflow-x-hidden">
         <Navigation />
-        <main className="pt-20">
+        <main className="pt-14 sm:pt-16 lg:pt-20">
           <Services />
         </main>
         <Footer />

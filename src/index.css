@@ -136,6 +136,9 @@
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -146,9 +149,9 @@
     box-shadow: var(--shadow-medium);
   }
   
-  /* Hero Button Variants */
+  /* Hero Button Variants - Mobile optimized */
   .btn-hero {
-    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold;
+    @apply bg-primary text-primary-foreground px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold text-sm md:text-base;
     @apply transition-all duration-300;
     background: var(--gradient-mint);
     box-shadow: var(--shadow-mint);
@@ -176,7 +179,7 @@
     @apply hover:scale-105;
   }
   
-  /* Portfolio Card */
+  /* Portfolio Card - Mobile optimized */
   .portfolio-card {
     @apply bg-card rounded-xl overflow-hidden transition-all duration-500 ease-out;
     @apply border border-border;
@@ -185,14 +188,14 @@
   }
   
   .portfolio-card:hover {
-    @apply transform -translate-y-3;
+    @apply transform -translate-y-1 md:-translate-y-3;
     box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(45, 212, 191, 0.1);
     animation-play-state: paused;
   }
   
-  /* Section Spacing */
+  /* Section Spacing - Improved mobile spacing */
   .section-padding {
-    @apply py-20 px-6 md:px-8 lg:px-12;
+    @apply py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8 lg:px-12;
   }
   
   /* Gradient Text */
@@ -205,6 +208,24 @@
 }
 
 @layer utilities {
+  /* Mobile-first responsive utilities */
+  .mobile-container {
+    @apply px-4 sm:px-6 md:px-8 lg:px-12;
+  }
+  
+  .mobile-text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  .mobile-heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  /* Touch-friendly interactive elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
   /* Enhanced Animation System */
   
   /* Basic Animations */
