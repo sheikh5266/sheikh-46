@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Play, Github, ArrowRight } from "lucide-react";
 import { AnimatedLoader, ParticleBackground } from "@/components/ui/animated-illustrations";
 
+// Portfolio Images
+import ecommerceVideoImg from "@/assets/portfolio-ecommerce-video.jpg";
+import motionGraphicsImg from "@/assets/portfolio-motion-graphics.jpg";
+import restaurantWebImg from "@/assets/portfolio-restaurant-web.jpg";
+import socialCampaignImg from "@/assets/portfolio-social-campaign.jpg";
+import characterIllustrationsImg from "@/assets/portfolio-character-illustrations.jpg";
+import corporateVideoImg from "@/assets/portfolio-corporate-video.jpg";
+
 interface PortfolioProps {
   isHomepage?: boolean;
 }
@@ -21,7 +29,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: 'E-commerce Product Videos',
       category: 'Video',
       description: 'Series of product showcase videos for online store',
-      image: '/placeholder.svg',
+      image: ecommerceVideoImg,
       tools: ['After Effects', 'Premiere Pro'],
       type: 'video',
       status: 'Case Study — available soon'
@@ -31,7 +39,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: 'Brand Motion Graphics',
       category: 'Motion',
       description: 'Animated logo and brand elements package',
-      image: '/placeholder.svg',
+      image: motionGraphicsImg,
       tools: ['After Effects', 'Illustrator'],
       type: 'motion',
       status: 'Case Study — available soon'
@@ -41,7 +49,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: 'Restaurant Website',
       category: 'Web',
       description: 'Modern responsive website with online ordering',
-      image: '/placeholder.svg',
+      image: restaurantWebImg,
       tools: ['React', 'Tailwind CSS', 'Node.js'],
       type: 'web',
       liveLink: '#',
@@ -52,7 +60,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: 'Social Media Campaign',
       category: 'Ads',
       description: 'Complete Meta ads campaign with video creatives',
-      image: '/placeholder.svg',
+      image: socialCampaignImg,
       tools: ['Meta Ads Manager', 'Premiere Pro'],
       type: 'ads',
       status: 'Case Study — available soon'
@@ -62,7 +70,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: '2D Character Illustrations',
       category: 'Illustration',
       description: 'Flat design character set for mobile app',
-      image: '/placeholder.svg',
+      image: characterIllustrationsImg,
       tools: ['Illustrator', 'Figma'],
       type: 'illustration',
       status: 'Case Study — available soon'
@@ -72,7 +80,7 @@ const Portfolio = ({ isHomepage = false }: PortfolioProps) => {
       title: 'Corporate Video Series',
       category: 'Video',
       description: 'Training and promotional videos for tech company',
-      image: '/placeholder.svg',
+      image: corporateVideoImg,
       tools: ['Premiere Pro', 'DaVinci Resolve'],
       type: 'video',
       status: 'Case Study — available soon'
