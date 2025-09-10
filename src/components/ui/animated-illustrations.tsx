@@ -87,35 +87,92 @@ export const AnimatedDesk = ({ className = "" }: { className?: string }) => (
   </div>
 );
 
-export const AnimatedLoader = ({ className = "" }: { className?: string }) => (
-  <div className={`${className} flex items-center justify-center`}>
-    <svg viewBox="0 0 100 100" className="w-16 h-16">
-      <circle
-        cx="50"
-        cy="50"
-        r="40"
-        stroke="currentColor"
-        strokeWidth="4"
-        fill="none"
-        strokeLinecap="round"
-        strokeDasharray="60 40"
-        className="animate-spin"
-      />
-      <circle
-        cx="50"
-        cy="50"
-        r="25"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeDasharray="40 30"
-        className="animate-spin"
-        style={{ animationDirection: 'reverse', animationDuration: '1s' }}
-      />
-    </svg>
-  </div>
-);
+export const AnimatedLoader = ({ className = "" }: { className?: string }) => {
+  // For areas where we need a compact loader, use the enhanced SVG version
+  return (
+    <div className={`${className} flex items-center justify-center relative`}>
+      {/* Enhanced SVG loader with glow effects */}
+      <div className="relative">
+        <svg viewBox="0 0 100 100" className="w-16 h-16">
+          {/* Outer ring */}
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            stroke="url(#gradient1)"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray="60 40"
+            className="animate-spin"
+            filter="url(#glow)"
+          />
+          {/* Inner ring */}
+          <circle
+            cx="50"
+            cy="50"
+            r="25"
+            stroke="url(#gradient2)"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray="40 30"
+            className="animate-spin"
+            style={{ animationDirection: 'reverse', animationDuration: '1s' }}
+            filter="url(#glow)"
+          />
+          {/* Center pulse */}
+          <circle
+            cx="50"
+            cy="50"
+            r="8"
+            fill="url(#gradient3)"
+            className="animate-pulse"
+          />
+          
+          {/* Gradients */}
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#64FFDA" />
+              <stop offset="100%" stopColor="#FF6B9D" />
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF6B9D" />
+              <stop offset="100%" stopColor="#FFE66D" />
+            </linearGradient>
+            <radialGradient id="gradient3">
+              <stop offset="0%" stopColor="#64FFDA" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#64FFDA" stopOpacity="0.2" />
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+        
+        {/* Floating particles around loader */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-mint rounded-full animate-ping"
+              style={{
+                left: `${20 + Math.cos(i * 60 * Math.PI / 180) * 40}%`,
+                top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 40}%`,
+                animationDelay: `${i * 0.2}s`,
+                animationDuration: '2s'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const SuccessAnimation = ({ className = "" }: { className?: string }) => (
   <div className={`${className} success-animation`}>
